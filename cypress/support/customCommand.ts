@@ -1,4 +1,5 @@
 
+//custom parent command
 Cypress.Commands.add('removeNoThanksframe', () => {
     cy.get("iframe[role='presentation']").then(($frame=>{
         if($frame.length > 0){
@@ -11,17 +12,33 @@ Cypress.Commands.add('removeNoThanksframe', () => {
     }))
 })
 
-Cypress.Commands.add('getLinks', { prevSubject: 'element' }, (subject) => {
+//custom dual command command. for Dual command : prevSubject: 'optional'
+Cypress.Commands.add('getLinks', { prevSubject: 'optional' }, (subject) => {
     if (subject) {
-        console.log("I am in if")
-        cy.wrap(subject).then((log)=>console.log("subject="+log))
         cy.wrap(subject).then(($el) => {
+            // invoking an atribute
             cy.wrap($el).invoke('attr','maxlength').then((p:any)=>console.log("lenght="+p))
-            cy.wrap($el).parents().find('ul')
+            // calling the parents . parents is actually a jquerry commnad.
+            cy.wrap($el).parents().find('.OBMEnb:nth-child(1) ul li .wM6W7d span').each(($el)=>{
+            cy.log("All elements \n"+$el.text())
+            })
         })
     }
     else {
-        console.log("I am in Else")
-        cy.get('a')
+        cy.log("I am in Else. No search found")
+    
     }
+})
+
+//custom child command command. for Dual command : prevSubject: 'optional'
+Cypress.Commands.add('getText', { prevSubject: 'element' }, (element) => {
+    cy.wrap(element).invoke('text').then((text)=>{
+        if(text === ''){
+            cy.wrap(element).invoke('attr','autocomplete')
+        }
+        else{
+            cy.wrap(element).invoke('text')
+        }
+    })
+    
 })
