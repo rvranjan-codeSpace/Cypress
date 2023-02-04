@@ -41,4 +41,11 @@ Cypress.Commands.add('getText', { prevSubject: 'element' }, (element) => {
         }
     })
     
+    
+})
+
+//custom  overwrite command
+Cypress.Commands.overwrite('visit', (originalFn, options) => { 
+  cy.visit
+
 })
