@@ -17,6 +17,7 @@ describe("Test Custom command to get the links on google after typing cypress",(
        cy.wait(2000)
        cy.get('.gLFyf').clear()
        cy.getLinks( )
+       
 
     })
 
