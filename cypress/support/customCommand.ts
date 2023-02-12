@@ -4,7 +4,7 @@ Cypress.Commands.add('removeNoThanksframe', () => {
     cy.get("iframe[role='presentation']").then(($frame=>{
         if($frame.length > 0){
             cy.frameLoaded("iframe[role='presentation']")
-            cy.iframe().contains("No thanks").click()
+            cy.iframe().contains("No Thanks").click()
         }
         else{
             cy.log("Sigin frame doesnot exists")
@@ -46,6 +46,15 @@ Cypress.Commands.add('getText', { prevSubject: 'element' }, (element) => {
 
 //custom  overwrite command
 Cypress.Commands.overwrite('visit', (originalFn, options) => { 
-  cy.visit
-
+    console.log("visiting URL")
+    return originalFn(options);
 })
+
+//custom  overwrite command
+/*
+Cypress.Commands.overwrite('type', (originalFn,text, options) => { 
+    const newText = '{selectAll}{{backspace}${text}'
+     return originalFn(newText,options);
+     cy.type
+ })
+ */

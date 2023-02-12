@@ -10,7 +10,7 @@ describe("Test Custom command",()=>{
         cy.get("iframe[role='presentation']").then(($frame=>{
             if($frame.length > 0){
                 cy.frameLoaded("iframe[role='presentation']")
-                cy.iframe().contains("No thanks").click()
+                cy.iframe().contains("No Thanks").click()
             }
             else{
                 cy.log("Sigin frame doesnot exists")

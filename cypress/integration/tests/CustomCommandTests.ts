@@ -5,7 +5,7 @@
 import 'cypress-iframe'
 
 describe("Test Custom command to get the links on google after typing cypress",()=>{
-    xit("count and print number of links after typing google search",()=>{
+    it("count and print number of links after typing google search",()=>{
         cy.visit("https://www.google.com")
 
         //parent custom command
@@ -20,7 +20,7 @@ describe("Test Custom command to get the links on google after typing cypress",(
 
     })
 
-    it("login to gmail and write a custom childcommand to contain text",()=>{
+    xit("login to gmail and write a custom childcommand to contain text",()=>{
         cy.visit("https://gmail.com/")
         cy.get("input[type='email']").type("secret_Sauce")
         // the below two lines are the usual
@@ -32,6 +32,7 @@ describe("Test Custom command to get the links on google after typing cypress",(
         })
 
         cy.get("input[type='email']").parents().contains("Email or phone").getText().then((p:any)=>{
+           
             cy.log("Email or Phone:Text with custom command "+p)
         })
 
