@@ -4,8 +4,8 @@ Cypress.Commands.add('removeNoThanksframe', () => {
     cy.get("iframe[role='presentation']").then(($frame=>{
         if($frame.length > 0){
             cy.frameLoaded("iframe[role='presentation']")
-           // cy.iframe().contains("No Thanks").click()
-           cy.iframe().get('iframe').click();
+            cy.iframe().contains("No thanks").click()
+          // cy.iframe().get('iframe').click();
         }
         else{
             cy.log("Sigin frame doesnot exists")
