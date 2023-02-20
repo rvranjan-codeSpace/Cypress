@@ -5,7 +5,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    specPattern : "cypress/integration/tests/*.ts",
+    specPattern : "cypress/integration/**/*.ts",
     chromeWebSecurity: false,
   },
   
