@@ -57,5 +57,4 @@ describe("test cross domain", () => {
         cy.contains('Try CucumberStudio')
 
     });
-
 })
