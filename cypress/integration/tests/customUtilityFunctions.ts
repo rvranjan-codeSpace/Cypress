@@ -1,6 +1,7 @@
 ///<reference types = "Cypress"/>
 ///<reference types = "cypress-iframe"/>
 
+
 import "cypress-real-events"
 
 describe('mousehover simple', () => {
@@ -11,8 +12,6 @@ describe('mousehover simple', () => {
          getText("//h1[@class='heading']").then((heading2:string )=>cy.log("Heading2="+heading2))
          getHeading("//h1[@class='heading']","xpath").should('equal','Welcome to the-internet')
          getHeading("//h1[@class='heading']","xpath").then((text)=>cy.log("Text here is "+text))
-         
-      
        
     })
 
