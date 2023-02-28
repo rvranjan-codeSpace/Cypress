@@ -7,6 +7,7 @@ export default defineConfig({
     },
     specPattern : "cypress/integration/**/*.ts",
     chromeWebSecurity: false,
+   // "baseUrl": "https://reqres.in/api/" 
   },
   
 });

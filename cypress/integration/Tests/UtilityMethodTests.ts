@@ -3,6 +3,7 @@
 
 
 import "cypress-real-events"
+import * as util from '../Utility/UtilityMethods'
 
 describe('mousehover simple', () => {
 
@@ -11,8 +12,20 @@ describe('mousehover simple', () => {
          cy.xpath("//h1[@class='heading']").invoke('text').then(heading=>cy.log(heading))
          getText("//h1[@class='heading']").then((heading2:string )=>cy.log("Heading2="+heading2))
          getHeading("//h1[@class='heading']","xpath").should('equal','Welcome to the-internet')
-         getHeading("//h1[@class='heading']","xpath").then((text)=>cy.log("Text here is "+text))
+         getHeading("//h1[@class='heading']","xpath").then((text:any)=>cy.log("Text here is "+text))
        
+    })
+
+    it("Calling utility function from different file .Return type is alias",()=>{
+        cy.visit("https://www.google.com")
+        util.getTextFromLinkIndexUsingAlias(3)
+        cy.get('@indexTxt').then(p=>expect(p).to.contain('Gmail'))
+    })
+
+    it("Calling utility function from different file.Return type is Promise",()=>{
+        cy.visit("https://www.google.com")
+        util.getTextFromLinkIndexUsingPromise(3).then((p:string)=>cy.log(p))
+        util.getTextFromLinkIndexUsingPromise(1000000).then((p:string)=>cy.log(p))
     })
 
     /*
