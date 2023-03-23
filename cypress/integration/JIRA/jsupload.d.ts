@@ -1,0 +1,1 @@
+declare function uploadCypressReport(): any;

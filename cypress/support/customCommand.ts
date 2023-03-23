@@ -36,13 +36,11 @@ Cypress.Commands.add('getText', { prevSubject: 'element' }, (element) => {
     cy.wrap(element).invoke('text').then((text)=>{
         if(text === ''){
             cy.wrap(element).invoke('attr','autocomplete')
-        }
-        else{
             cy.wrap(element).invoke('text')
         }
-    })
-    
-    
+        else{
+        }
+    }) 
 })
 
 //custom  overwrite command
@@ -51,11 +49,56 @@ Cypress.Commands.overwrite('visit', (originalFn, options) => {
     return originalFn(options);
 })
 
-//custom  overwrite command
 /*
-Cypress.Commands.overwrite('type', (originalFn,text, options) => { 
-    const newText = '{selectAll}{{backspace}${text}'
-     return originalFn(newText,options);
-     cy.type
- })
- */
+Cypress.Commands.add('waitForElement', (condition, pollingTime, timeout) => {
+  console.log("condition:"+condition)
+  let numOFPolls:number =0;
+  let startTime = Date.now();
+  return cy.get('body').then(() => {
+    return cy.wrap(null, { timeout }).should(() => {
+      return new Cypress.Promise(resolve => {
+        const checkCondition = () => {
+          const elapsedTime = Date.now() - startTime;
+          if (elapsedTime >= timeout) {
+            console.log("checked for the function"+numOFPolls)
+            throw new Error(`Timed out after ${timeout}ms waiting for element`);
+          }
+          if (condition()) {
+            resolve();
+            return;
+          }
+          console.log("rechecking...")
+          setTimeout(checkCondition, pollingTime);
+        };
+        numOFPolls++
+        
+        checkCondition();
+      });
+    });
+  });
+});
+*/
+Cypress.Commands.add('waitForElement', (condition,elem, pollingTime, timeout) => {
+  let startTime = Date.now();
+  return cy.get('body').then(() => {
+    return new Cypress.Promise(resolve => {
+      const checkCondition = () => {
+        const elapsedTime = Date.now() - startTime;
+        if (elapsedTime >= timeout) {
+          throw new Error(`Timed out after ${timeout}ms waiting for element`);
+        }
+        const element = Cypress.$(elem);
+        if (condition()) {
+          resolve(cy.wrap(element));
+          return;
+        }
+        setTimeout(checkCondition, pollingTime);
+      };
+      checkCondition();
+    });
+  });
+});
+
+
+
+

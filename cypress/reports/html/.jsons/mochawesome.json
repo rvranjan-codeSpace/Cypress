@@ -1,0 +1,129 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-03-22T11:06:22.239Z",
+    "end": "2023-03-22T11:06:30.166Z",
+    "duration": 7927,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6c43acad-ac1d-4a25-985d-0a49e9b9431c",
+      "title": "",
+      "fullFile": "cypress\\integration\\AyncCode\\AsyncCalculationTests.ts",
+      "file": "cypress\\integration\\AyncCode\\AsyncCalculationTests.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1ba9567f-16d1-4923-9839-8d7859bc40ab",
+          "title": "Test async commands",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Way1 using aliases",
+              "fullTitle": "Test async commands Way1 using aliases",
+              "timedOut": null,
+              "duration": 3354,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let arr = [];\ncy.visit(\"https://www.google.com\");\n//parent custom command\ncy.removeNoThanksframe();\ncy.get('.gLFyf').type(\"secret_Sauce\");\ncy.get(\"a\").each(($el) => {\n    arr.push(($el.text()));\n}).as(\"myArray\");\ncy.get(\"@myArray\").then(() => {\n    console.log(\"Anchor tags count = \" + arr.length);\n    console.log(`Anchor tag texts string- ${arr.join(\", \")}`);\n});\n// the below console.log will always give a wrong value as these commands are by nature aynchorouns\n// so commenting them out. \nconsole.log(\"Anchor tags count = \" + arr.length);\nconsole.log(`Anchor tag texts string- ${arr.join(\", \")}`);",
+              "err": {},
+              "uuid": "be7803e4-9e3c-427b-b7c4-56dc43b1da69",
+              "parentUUID": "1ba9567f-16d1-4923-9839-8d7859bc40ab",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Way2",
+              "fullTitle": "Test async commands Way2",
+              "timedOut": null,
+              "duration": 1483,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let arr = [];\ncy.visit(\"https://www.google.com\");\n//parent custom command\ncy.get(\"a\").then(($el) => {\n    for (let index = 0; index < $el.length; index++) {\n        arr.push(Cypress.$($el[index]).text());\n    }\n    return arr;\n}).then((newArr) => {\n    console.log(\"Another ways:Anchor tags count = \" + newArr.length);\n    console.log(`Another ways:Anchor tag texts string- ${newArr.join(\", \")}`);\n});",
+              "err": {},
+              "uuid": "98bb848c-15cd-40a1-879a-4f5c5b96abbb",
+              "parentUUID": "1ba9567f-16d1-4923-9839-8d7859bc40ab",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "be7803e4-9e3c-427b-b7c4-56dc43b1da69",
+            "98bb848c-15cd-40a1-879a-4f5c5b96abbb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4837,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "custom-title",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "html": false,
+        "overwrite": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

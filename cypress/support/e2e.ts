@@ -18,6 +18,7 @@ import './commands'
 import './customCommand'
 import './APIUtility'
 import '@cypress/xpath';
+import 'cypress-mochawesome-reporter/register';
 
 
 // Alternatively you can use CommonJS syntax:
