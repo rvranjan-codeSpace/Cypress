@@ -1,0 +1,7 @@
+working:
+curl -s -i -X POST \
+  -u kumarkim@gmail.com:ATATT3xFfGF01BQHvhi0LoIAoaZOzN281hv2YiSsb5JlUBIxWCXDl758WN8boGeYilFJJi_sgRZA3gafuRBEEgA1gC-iLbhJWOi7QlVLaHk_U3fkd3jZ_xXj7TSw-ZkFncN0-uwjhSOMFMZrci3Udf01LFfg7IfdWxKCBd85C35cZiueVkX2C3w=1748F21D \
+  -H "X-Atlassian-Token: nocheck" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@/d/invitiation.jpg" \
+  'https://kimkam1.atlassian.net/rest/api/3/issue/FIR-4/attachments'
