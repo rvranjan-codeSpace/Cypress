@@ -1,0 +1,168 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 3,
+    "failures": -3,
+    "start": "2023-03-30T14:24:46.396Z",
+    "end": "2023-03-30T14:25:01.247Z",
+    "duration": 14851,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 75,
+    "other": 3,
+    "hasOther": true,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b92b3daf-d019-40f9-8aee-d8fff866d064",
+      "title": "",
+      "fullFile": "cypress\\integration\\CrossDomain\\crossDomain.ts",
+      "file": "cypress\\integration\\CrossDomain\\crossDomain.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3e48bfb2-99a1-41eb-a1e6-b1b7956f5035",
+          "title": "test cross domain",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "test cross domain",
+              "fullTitle": "test cross domain test cross domain",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.visit(\"https://www.google.com\");\n//parent custom command\ncy.removeNoThanksframe();\ncy.get('.gLFyf').type(\"cypress:youtube{enter}\");\ncy.wait(3000);\ncy.contains('Web Automation using Cypress', { timeout: 5000 }).should('be.visible').click();\n///below code is not working.\ncy.origin('https://www.youtube.com', () => {\n    cy.get('Subscribe');\n});",
+              "err": {},
+              "uuid": "fe750e21-bc3d-4d9e-add5-0f173c61d41f",
+              "parentUUID": "3e48bfb2-99a1-41eb-a1e6-b1b7956f5035",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should navigate to Founder's website from Saeloun's teams page",
+              "fullTitle": "test cross domain should navigate to Founder's website from Saeloun's teams page",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "// should render Saeloun's website\ncy.visit(\"https://www.saeloun.com/team\");\n// click on image containing attribute alt as 'Vipul AM'\ncy.get('img[alt=\"Vipul A M\"]').click();\n// on clicking the founder's image, user should be navigated to Vipul's website'\ncy.url().should(\"contain\", \"https://vipulnsward.com/\");\ncy.get('#text03').then(($el) => {\n    cy.log($el.text());\n});",
+              "err": {},
+              "uuid": "b76dcac5-7c86-4072-af8a-a1d23f1e5f2c",
+              "parentUUID": "3e48bfb2-99a1-41eb-a1e6-b1b7956f5035",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "version12- Test1",
+              "fullTitle": "test cross domain version12- Test1",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.visit('https://automationpanda.com/bdd/'); //primary origin\ncy.get('a[href=\"https://cucumber.io/\"]').click(); //click the link, which navigates to the new cross origin in new tab\ncy.visit('https://cucumber.io/'); //new cross origin\ncy.origin('https://cucumber.io/', () => {\n    cy.get('.nav-main-toggle').click();\n    cy.contains('Learn BDD');\n    cy.contains('Learn BDD');\n    cy.contains('Try CucumberStudio');\n});",
+              "err": {},
+              "uuid": "e1bbcd98-c829-4087-bc60-64e0f2dd153f",
+              "parentUUID": "3e48bfb2-99a1-41eb-a1e6-b1b7956f5035",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "version12- Test1 without Origin",
+              "fullTitle": "test cross domain version12- Test1 without Origin",
+              "timedOut": null,
+              "duration": 12344,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// This fails only for firefox browser\ncy.visit('https://automationpanda.com/bdd/'); //primary origin\ncy.get('a[href=\"https://cucumber.io/\"]').click(); //click the link, which navigates to the new cross origin in new tab\ncy.visit('https://cucumber.io/'); //new cross origin\ncy.get('.nav-main-toggle').click();\ncy.contains('Learn BDD');\ncy.contains('Learn BDD');\ncy.contains('Try CucumberStudio');",
+              "err": {},
+              "uuid": "efa25a5d-dae1-4d64-a001-5f6e2770d2f8",
+              "parentUUID": "3e48bfb2-99a1-41eb-a1e6-b1b7956f5035",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "efa25a5d-dae1-4d64-a001-5f6e2770d2f8"
+          ],
+          "failures": [],
+          "pending": [
+            "fe750e21-bc3d-4d9e-add5-0f173c61d41f",
+            "b76dcac5-7c86-4072-af8a-a1d23f1e5f2c",
+            "e1bbcd98-c829-4087-bc60-64e0f2dd153f"
+          ],
+          "skipped": [],
+          "duration": 12344,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "custom-title",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "html": false,
+        "overwrite": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
